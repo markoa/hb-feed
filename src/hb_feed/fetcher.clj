@@ -1,9 +1,8 @@
-(ns hb_feed.fetcher
+(ns hb-feed.fetcher
   (:require [hb.scraper.manning :as manning]
             [hb.scraper.pragmatic :as pragmatic]
-            [clojurewerkz.spyglass.client :as memcache]))
-
-(def memcache-address "127.0.0.1:11211")
+            [clojurewerkz.spyglass.client :as memcache]
+            [hb-feed.memcache-common :refer :all]))
 
 (def five-days (* 60 60 24 5))
 
