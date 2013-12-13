@@ -11,7 +11,7 @@
           (pragmatic/latest-books)))
 
 (defn write-books-to-cache [books]
-  (let [conn (memcache/text-connection memcache-address)
+  (let [conn (apply memcache/text-connection (memcache-address))
         serialized-books (prn-str books)
         res (memcache/set conn "books" five-days serialized-books)]
     (memcache/shutdown conn 3 java.util.concurrent.TimeUnit/SECONDS)))

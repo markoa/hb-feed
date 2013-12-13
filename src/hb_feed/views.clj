@@ -4,6 +4,6 @@
             [hb-feed.memcache-common :refer :all]))
 
 (defn books-feed []
-  (let [conn (memcache/text-connection memcache-address)
+  (let [conn (apply memcache/text-connection (memcache-address))
         books (memcache/get conn "books")]
     (json/write-str books)))
