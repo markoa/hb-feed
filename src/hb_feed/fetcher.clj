@@ -4,16 +4,16 @@
             [clojurewerkz.spyglass.client :as memcache]
             [hb-feed.memcache-common :refer :all]))
 
-(def five-days (* 60 60 24 5))
+(defn five-days [] (* 60 60 24 5))
 
 (defn fetch-books []
   (concat (manning/latest-books)
           (pragmatic/latest-books)))
 
 (defn write-books-to-cache [books]
-  (let [conn (apply memcache/text-connection (memcache-address))
+  (let [conn (memcache-connection)
         serialized-books (prn-str books)
-        res (memcache/set conn "books" five-days serialized-books)]
+        res (memcache/set conn "books" (five-days) serialized-books)]
     (memcache/shutdown conn 3 java.util.concurrent.TimeUnit/SECONDS)))
 
 (defn -main [& args]
