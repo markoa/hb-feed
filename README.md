@@ -1,6 +1,6 @@
 # hb-feed
 
-JSON API based on [hb-scraper](https://github.com/markoa/hb-scraper).
+JSON feed of recently published programming books, based on [hb-scraper](https://github.com/markoa/hb-scraper).
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ To start a web server for the application, run:
 
     lein ring server
 
-The application is running on Heroku. Relevant configuration is in `Procfile` and `system.properties.`
+The application is deployed to Heroku. Relevant configuration is in `Procfile` and `system.properties.`
 
 ## License
 
