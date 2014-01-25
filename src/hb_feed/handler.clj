@@ -2,13 +2,15 @@
   (:use compojure.core
         hb-feed.views)
   (:require [compojure.handler :as handler]
-            [compojure.route :as route]))
+            [compojure.route :as route]
+            [ring.middleware.json :as middleware]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
-  (GET "/books.json" [] (books-feed))
+  (GET "/" [] {:body {:hello "world"}})
+  (GET "/books.json" [] {:body (books-feed)})
   (route/resources "/")
-  (route/not-found "Not Found"))
+  (route/not-found {:body {:error "not found"}}))
 
 (def app
-  (handler/site app-routes))
+  (-> (handler/api app-routes)
+      (middleware/wrap-json-response)))

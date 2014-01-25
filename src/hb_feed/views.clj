@@ -5,5 +5,5 @@
 
 (defn books-feed []
   (let [conn (memcache-connection)
-        books (memcache/get conn "books")]
-    (json/write-str books)))
+        books-str (memcache/get conn "books")]
+    (read-string books-str)))

@@ -4,6 +4,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [compojure "1.1.6"]
                  [ring/ring-servlet "1.2.0-RC1"]
+                 [ring/ring-json "0.2.0"]
                  [hb-scraper "0.1.0"]
                  [clojurewerkz/spyglass "1.1.0"
                    :exclusions [spy/spymemcached]]
