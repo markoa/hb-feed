@@ -7,8 +7,8 @@
 (defn five-days [] (* 60 60 24 5))
 
 (defn fetch-books []
-  (concat (manning/latest-books)
-          (pragmatic/latest-books)))
+  (concat (map #(merge % {:publisher "manning"}) (manning/latest-books))
+          (map #(merge % {:publisher "pragmatic"}) (pragmatic/latest-books))))
 
 (defn write-books-to-cache [books]
   (let [conn (memcache-connection)
